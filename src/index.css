@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  }
+
+  html {
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Neon Infinity Levitation */
+@keyframes infinity-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Continuous luminous white beam tracing the infinity lemniscate */
+@keyframes infinity-beam {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1000;
+  }
+}
+
+/* Gentle breathing halo behind the infinity symbol */
+@keyframes infinity-halo {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.04);
+  }
+}
+
+/* Seamless Left-to-Right Marquee (-50% -> 0%) */
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+/* Scroll cue subtle bounce */
+@keyframes cue-nudge {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+}
+
+.animate-infinity-float {
+  animation: infinity-float 5.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+.animate-infinity-beam {
+  animation: infinity-beam 4.2s linear infinite;
+}
+
+.animate-infinity-beam-trail {
+  animation: infinity-beam 4.2s linear infinite;
+}
+
+.animate-infinity-halo {
+  animation: infinity-halo 5.6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-cue-nudge {
+  animation: cue-nudge 2.4s ease-in-out infinite;
+}
+
+.marquee-viewport {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 9%,
+    black 91%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 9%,
+    black 91%,
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 46s linear infinite;
+  will-change: transform;
+}
+
+.marquee-viewport:hover .marquee-track,
+.marquee-viewport:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-infinity-float,
+  .animate-infinity-beam,
+  .animate-infinity-beam-trail,
+  .animate-infinity-halo,
+  .animate-cue-nudge,
+  .marquee-track {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Sonsuz Akademi — Kademeli Eğitim Platformu",
+  "description": "Apple tasarım estetiğiyle tasarlanmış, dört kademeli uzmanlık yolculuğu sunan modern Türkçe eğitim platformu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
